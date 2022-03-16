@@ -1,0 +1,17 @@
+.weather-widget {
+    border-radius: 1em;
+    width: 100%;
+    display: inline-flex;
+    flex-direction: column;
+    flex: 1;
+    position: absolute;
+    top: 50%;
+    color: #300350;
+    padding: 2em;
+    @media screen and (min-width: 720px) {
+        width: 50%;
+        height: 100%;
+        right: 0;
+        top: unset;
+    }
+}

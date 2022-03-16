@@ -1,0 +1,190 @@
+.zip-widget {
+    border: 2px #94167F88 solid;
+    border-radius: 1em;
+    width: 100%;
+    height: 50%;
+    display: inline-flex;
+    flex-direction: column;
+    flex: 1;
+    position: absolute;
+    @media screen and (min-width: 720px) {
+        width: 50%;
+        height: 100%;
+    }
+    & .admin-tools {
+        position: absolute;
+        left: 0.25em;
+        right: 0.25em;
+        top: 0.25em;
+        border-radius: 0.75em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        bottom: calc(100% + -4em);
+        background-color: #E9347988;
+        transition: bottom 0.5s ease-out;
+        & h2 {
+            opacity: 0;
+            position: absolute;
+            filter: blur(2px);
+            transition: opacity 0.5s ease-in-out;
+            color: white;
+            font-size: 2em;
+            text-align: left;
+            left: 1rem;
+            line-height: 1em;
+            text-transform: uppercase;
+            pointer-events: none;
+            @media screen and (min-width: 960px) {
+                font-size: 8em;
+                filter: blur(8px);
+                line-height: 0.8em;
+            }
+        }
+        & .buttons-container {
+            position: absolute;
+            width: calc(0% + 4em);
+            right: 0%;
+            z-index: 999;
+            transition: right 0.5s linear;
+        }
+        & button {
+            background: none;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            color: #94167F;
+            font-size: 1em;
+            & svg {
+                transition: font-size 0.5s linear;
+                font-size: 4em;
+            }
+            &:active, &:focus {
+                outline: none;
+            }
+        }
+        &.init-style {
+            bottom: 0.25em;
+            & h2 {
+                opacity: 1;
+            }
+            & button {
+                & svg {
+                    font-size: 8em;
+                }
+            }
+            & .buttons-container {
+                width: 20%;
+                right: 40%;
+            }
+        }
+    }
+    & .zip-forms {
+        z-index: 999;
+        top: 5em;
+        position: absolute;
+        left: 0.25em;
+        right: 0.25em;
+        bottom: 0.25em;
+        overflow: scroll;
+        font-size: 0.8em;
+        @media screen and (min-width: 960px) {
+            font-size: 1em;
+        }
+        & ul {
+            list-style: none;
+            padding: 0;
+            & li {
+                margin: 0em 0 1em;
+                @media screen and (min-width: 960px) {
+                    margin: 0em 0 2em;
+                }
+            }
+            & .error {
+                color: #153CB4;
+                margin-left: 1em;
+                font-weight: bold;
+            }
+            & input {
+                width: 100%;
+                background: none;
+                border: 1px #E93479 solid;
+                border-radius: 0.75em;
+                height: 2em;
+                margin-left: 2px;
+                font-size: 2em;
+                color: #E93479;
+                padding: 0.5rem 2rem 0.5rem 0.5rem;
+                flex: 1;
+                &:active, &:focus {
+                    outline: 2px #E93479 solid;
+                }
+                &::placeholder {
+                    color: #E9347988;
+                    filter: blur(2px);
+                }
+            }
+            & .spinner {
+                color: #E93479;
+                position: absolute;
+                right: 11em;
+                transition: opacity 0.1s linear;
+                opacity: 0;
+                animation: spinner 1s ease-in-out 0s infinite;
+                
+                &.active {
+                    opacity: 1;
+                }
+                & svg {
+                    font-size: 2em;
+                }
+            }
+            & button {
+                background: none;
+                border: none;
+                outline: none;
+                color: #E9347966;
+                font-size: 1em;
+                & svg {
+                    font-size: 4em;
+                    &.spinner {
+                        animation: spinner 1s ease-in-out 0s infinite;
+                        position: relative;
+                        opacity: 1;
+                        right: unset;
+                    }
+                }
+                &:active, &:focus {
+                    outline: none;
+                    -webkit-tap-highlight-color: rgba(0,0,0,0);
+                }
+                &.enabled {
+                    color: #E93479;
+                    cursor: pointer;
+                    &:active {
+                        color: #F9AC53;
+                    }
+                }
+                &.active {
+                    color: #F9AC53;
+                }
+            }
+            & .zip-form {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+            }
+        }
+    }
+}
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
